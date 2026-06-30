@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking System - Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container" id="mainDashboard">
+        
+        <div class="top-bar">
+            <div class="system-status" id="systemStatusBlock">
+                <span class="pulse-dot" id="statusDot"></span>
+                <span class="status-text" id="statusText">HỆ THỐNG LIVE</span>
+            </div>
+            <div id="digital-clock" class="clock">00:00:00 - 01/01/2026</div>
+        </div>
+
+        <h1>SMART PARKING SYSTEM</h1>
+
+        <div class="led-matrix-display">
+            <div class="led-wrapper">
+                <span id="ledText" class="led-text">ĐANG KHỞI ĐỘNG HỆ THỐNG...</span>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card total">
+                <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="card-info">
+                    <h3>Tổng số chỗ</h3>
+                    <span id="tongcho">0</span>
+                </div>
+            </div>
+            <div class="stat-card occupied">
+                <div class="card-icon"><i class="fa-solid fa-car"></i></div>
+                <div class="card-info">
+                    <h3>Số xe hiện tại</h3>
+                    <span id="soxe">0</span>
+                </div>
+            </div>
+            <div class="stat-card available">
+                <div class="card-icon"><i class="fa-solid fa-square-check"></i></div>
+                <div class="card-info">
+                    <h3>Chỗ trống</h3>
+                    <span id="chotrong">0</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Sơ đồ bãi đỗ xe trực tuyến</h2>
+        <div class="parking-grid">
+            <div id="P1" class="slot trong">P1</div>
+            <div id="P2" class="slot trong">P2</div>
+            <div id="P3" class="slot trong">P3</div>
+            <div id="P4" class="slot trong">P4</div>
+            <div id="P5" class="slot trong">P5</div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="main-control-zone">
+            
+            <div class="control-box barrier-control">
+                <h3 class="box-title"><i class="fa-solid fa-torii-gate"></i> Giám sát Hệ thống Barie</h3>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+                    
+                    <div style="flex: 1; min-width: 240px; border-right: 1px solid #eee; padding-right: 15px; display: flex; align-items: center; gap: 15px;">
+                        <div>
+                            <img src="image/barieclose.png" id="barieVaoImg" alt="Barie Vào" style="width: 70px;">
+                        </div>
+                        <div>
+                            <h4 style="margin:0; color:#e67e22;"><i class="fa-solid fa-right-to-bracket"></i> CHIỀU VÀO</h4>
+                            <h3 id="barieVaoStatus" class="barrier-status" style="margin: 5px 0; font-size: 1.1rem;">ĐÓNG</h3>
+                            <div class="button-group" style="display: flex; gap: 5px;">
+                                <button id="btnOpenVao" class="btn btn-open" style="padding: 4px 8px; font-size: 0.8rem;"><i class="fa-solid fa-lock-open"></i> MỞ</button>
+                                <button id="btnCloseVao" class="btn btn-close" style="padding: 4px 8px; font-size: 0.8rem;"><i class="fa-solid fa-lock"></i> ĐÓNG</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="flex: 1; min-width: 240px; display: flex; align-items: center; gap: 15px;">
+                        <div>
+                            <img src="image/barieclose.png" id="barieRaImg" alt="Barie Ra" style="width: 70px;">
+                        </div>
+                        <div>
+                            <h4 style="margin:0; color:#2ecc71;"><i class="fa-solid fa-right-from-bracket"></i> CHIỀU RA</h4>
+                            <h3 id="barieRaStatus" class="barrier-status" style="margin: 5px 0; font-size: 1.1rem;">ĐÓNG</h3>
+                            <div class="button-group" style="display: flex; gap: 5px;">
+                                <button id="btnOpenRa" class="btn btn-open" style="padding: 4px 8px; font-size: 0.8rem;"><i class="fa-solid fa-lock-open"></i> MỞ</button>
+                                <button id="btnCloseRa" class="btn btn-close" style="padding: 4px 8px; font-size: 0.8rem;"><i class="fa-solid fa-lock"></i> ĐÓNG</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="control-box pccc-control" id="pcccCard">
+                <h3 class="box-title"><i class="fa-solid fa-fire-extinguisher"></i> An toàn & PCCC</h3>
+                <div class="pccc-grid">
+                    <div class="pccc-item">
+                        <span class="pccc-label">Nhiệt độ hầm</span>
+                        <span id="txtTemp" class="pccc-value">-- °C</span>
+                    </div>
+                    <div class="pccc-item">
+                        <span class="pccc-label">Trạng thái Khói</span>
+                        <span id="txtSmoke" class="pccc-value status-safe">AN TOÀN</span>
+                    </div>
+                    <div class="pccc-item">
+                        <span class="pccc-label">Hệ thống Còi</span>
+                        <span id="txtBuzzer" class="pccc-value">TẮT</span>
+                    </div>
+                    <div class="pccc-item">
+                        <span class="pccc-label">Vòi phun nước</span>
+                        <span id="txtSprinkler" class="pccc-value">TẮT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-box log-panel">
+                <h3 class="box-title"><i class="fa-solid fa-clock-rotate-left"></i> Nhật ký hoạt động</h3>
+                <div id="logContainer" class="log-container">
+                    <div class="log-item system">Hệ thống đã kết nối cơ sở dữ liệu Firebase thành công.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-footer">
+            <p><i class="fa-solid fa-headset"></i> Mọi chi tiết xin liên hệ Hotline: <strong>0396784568</strong> &nbsp;|&nbsp; <i class="fa-solid fa-envelope"></i> Email: <strong>truongthiyennhi.0123@gmail.com</strong></p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <audio id="fireSiren" src="audio/siren.mp3" loop></audio>
+    
+    <script>
+        // Cấu hình chìa khóa kết nối vào đúng project Firebase của bạn
+        var firebaseConfig = {
+            apiKey: "AIzaSyCc-ztM9fyTPB6IEXv1FTgxHSOLlRr_mho",
+            authDomain: "smart-parking-1ab21.firebaseapp.com",
+            databaseURL: "https://smart-parking-1ab21-default-rtdb.firebaseio.com",
+            projectId: "smart-parking-1ab21",
+            storageBucket: "smart-parking-1ab21.firebasestorage.app",
+            messagingSenderId: "405582065214",
+            appId: "1:405582065214:web:e2aaa80562a387531bab6f"
+        };
+        // Khởi động kết nối
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="function.js"></script>
+</body>
+</html>
