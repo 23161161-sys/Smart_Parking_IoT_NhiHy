@@ -3,8 +3,8 @@
 * **Sinh viên thực hiện:**
     * Trương Thị Yến Nhi - MSSV: 23161161
     * Nguyễn Huỳnh Nhật Hỷ - MSSV: 23161130
-* **Môn học:** [Thực tập Cơ sở và Ứng dụng IoT]
-* **Giảng viên hướng dẫn:** [Trương Quang Phúc]
+* **Môn học:** Thực tập Cơ sở và Ứng dụng IoT
+* **Giảng viên hướng dẫn:** Trương Quang Phúc
 
 ## Tổng Quan Dự Án
 Dự án ứng dụng công nghệ IoT nhằm xây dựng một hệ thống giám sát và quản lý bãi đỗ xe thông minh. Hệ thống cho phép cập nhật trạng thái các vị trí đỗ, điều khiển rào chắn tự động và xử lý các sự cố an ninh, hỏa hoạn theo thời gian thực (Real-time) thông qua sự kết hợp giữa vi điều khiển ESP32, cơ sở dữ liệu đám mây Firebase và giao diện điều khiển Web Dashboard.
@@ -30,7 +30,7 @@ Dự án ứng dụng công nghệ IoT nhằm xây dựng một hệ thống gi�
 * **Cloud Platform:** Firebase Realtime Database (Nền tảng trung gian lưu trữ và truyền nhận dữ liệu siêu tốc, độ trễ thấp giữa ESP32 và Web).
 
 ## Demo Hệ Thống & Mã Nguồn
-* **Link Video Thuyết Trình Demo:** [https://www.youtube.com/watch?v=25c98vBTRL0]
+* **Link Video Thuyết Trình Demo:** https://www.youtube.com/watch?v=25c98vBTRL0
 
 ---
 *Đồ án được thực hiện và hoàn thiện bởi nhóm sinh viên nhằm mục đích nghiên cứu, học tập các giải pháp IoT ứng dụng vào đô thị thông minh (Smart City).*
